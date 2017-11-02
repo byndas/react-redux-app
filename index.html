@@ -1,18 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Document</title>
-    </head>
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+  </head>
 
-    <body>
-        <div id="root">nothing rendered yet</div>
-        <script src='https://unpkg.com/react@16.0.0/dist/react.min.js'></script>
-        <script src='https://unpkg.com/react-dom@16.0.0/dist/react-dom.min.js'></script>
-        <script>
-            // code goes here
-        </script>
-    </body>
+  <body>
+    <div id="root">nothing rendered yet</div>
+    <script src='https://unpkg.com/react@16.0.0/dist/react.min.js'></script>
+    <script src='https://unpkg.com/react-dom@16.0.0/dist/react-dom.min.js'></script>
+
+    <script>
+      import React from './react.min.js';
+      import ReactDOM from './react-dom.min.js';
+
+      class FavoriteCity extends React.Component {
+        constructor {
+          this.state = {
+            fontWeightState: 'bold'
+          }
+        }
+        toggleFontWeight() {
+          var fontWeightState = (this.state.fontWeightState === 'bold') ? 'normal' : 'bold'
+          this.setState({ fontWeightState })
+        }
+        render() {
+          return (
+            li({
+                onClick: this.toggleFontWeight,
+                style: {
+                  fontWeight: this.state.fontWeightState,
+                  color: this.props.titleColor
+                }
+              },
+              this.props.titleName
+            )
+          )
+        }
+      }
+
+      ReactDOM.render(markupExample, document.getElementById('root'));
+    </script>
+  </body>
 
 </html>
