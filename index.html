@@ -4,43 +4,33 @@
   <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="/public/style.css" />
   </head>
 
   <body>
-    <div id="root">nothing rendered yet</div>
+    <div id="root"></div>
+    <script src='https://unpkg.com/@babel/standalone@7.0.0-beta.4/babel.min.js'></script>
     <script src='https://unpkg.com/react@16.0.0/dist/react.min.js'></script>
     <script src='https://unpkg.com/react-dom@16.0.0/dist/react-dom.min.js'></script>
 
-    <script>
-      import React from './react.min.js';
-      import ReactDOM from './react-dom.min.js';
-
-      class FavoriteCity extends React.Component {
-        constructor {
-          this.state = {
-            fontWeightState: 'bold'
-          }
-        }
-        toggleFontWeight() {
-          var fontWeightState = (this.state.fontWeightState === 'bold') ? 'normal' : 'bold'
-          this.setState({ fontWeightState })
-        }
-        render() {
-          return (
-            li({
-                onClick: this.toggleFontWeight,
-                style: {
-                  fontWeight: this.state.fontWeightState,
-                  color: this.props.titleColor
-                }
-              },
-              this.props.titleName
-            )
-          )
-        }
-      }
-
-      ReactDOM.render(markupExample, document.getElementById('root'));
+    <script type='text/babel'>
+      import React from './react.min.js'; import ReactDOM from './react-dom.min.js'; class FavoriteCity extends React.Component { constructor { this.state = { fontWeightState: 'bold' } } toggleFontWeight() { var fontWeightState = (this.state.fontWeightState
+      === 'bold') ? 'normal' : 'bold' this.setState({ fontWeightState }) } render () { return (
+      <li onClick={this.toggleFontWeight} style={{fontWeight: this.state.fontWeightState, color: this.props.titleColor }}>
+        {this.props.titleName}
+      </li>
+      ) } } var App = () => (
+      <div>
+        <h1>My Favorite Cities to Visit</h1>
+        <ul>
+          <FavoriteCity titleColor='peru' titleName='House of Cards' />
+          <FavoriteCity titleColor='rebeccapurple' titleName='Jessica Jones' />
+          <FavoriteCity titleColor='lawngreen' titleName='Stranger Things' />
+          <FavoriteCity titleColor='thistle' titleName='Daredevil' />
+          <FavoriteCity titleColor='mediumspringgreen' titleName='Bojack Horseman' />
+        </ul>
+      </div>
+      ) ReactDOM.render(markupExample, document.getElementById('root'));
     </script>
   </body>
 
